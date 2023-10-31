@@ -1,0 +1,30 @@
+.message{
+  background: #fff6d6;
+  border: 1px solid #edd29c;
+  display: block;
+  font-size: 13px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  position: relative;
+  .button.delete{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  &.error{
+    background: #ffdfe3;
+    border: 1px solid #ff8986;
+    font-weight: 500;
+    a{
+      border-bottom-color: transparentize($first-color, .6);
+      //@include respond-to(custom-not-touch){
+      //  &:hover, &:active{
+      //    border-bottom-color: transparent;
+      //  }
+      //}
+    }
+  }
+  &.large{
+    font-size: 16px;
+  }
+}

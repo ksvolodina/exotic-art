@@ -1,0 +1,67 @@
+.wp-block-gallery {
+  @include clear-list;
+}
+
+.blocks-gallery-grid, .wp-block-gallery{
+  width: 100%;
+}
+
+.row-wrap {
+  .wp-block-gallery {
+    @extend .row;
+    @include flexbox;
+    @include justify-content-center;
+    margin-top: 20px;
+
+    .blocks-gallery-item {
+      margin-right: 0 !important;
+      flex-grow: 0;
+      @extend .col;
+      //@extend .medium-6;
+      //@extend .xsmall-12;
+      //@extend .large-4;
+
+      a {
+        @include a-block;
+        @include img-wrapper;
+        @include block-hover;
+        @include block-hover-height;
+        height: 380px !important;
+        width: 100%;
+
+        img {
+          object-fit: cover;
+          height: 100%;
+          width: auto;
+        }
+
+        img.vertical {
+          height: auto;
+          width: 100%;
+        }
+
+        //@include respond-to(custom-small-down) {
+        //  height: auto !important;
+        //  text-align: center;
+        //  img {
+        //    @include transform-translate(0, 0);
+        //    display: inline-block;
+        //    height: auto !important;
+        //    max-height: 400px !important;
+        //    position: static;
+        //    width: auto !important;
+        //    max-width: 100%;
+        //  }
+        //}
+        //@include respond-to(custom-not-touch) {
+        //  &:hover, &:active {
+        //    img.vertical {
+        //      width: 105%;
+        //    }
+        //  }
+        //}
+      }
+    }
+  }
+}
+

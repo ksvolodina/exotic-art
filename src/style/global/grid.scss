@@ -1,0 +1,57 @@
+@import "global";
+
+/*------------------------------------------------------ row -----------------------------------------------------*/
+$row-width: 1240px;
+$row-padding: 15px;
+
+
+.row{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $row-width;
+  padding-left: $row-padding;
+  padding-right: $row-padding;
+  &-full{
+    max-width: 100%;
+  }
+}
+
+@mixin row-reset{
+  margin-left: -$row-padding;
+  margin-right: -$row-padding;
+}
+
+.medium-up-hide{
+  @include respond-to(medium-up){
+    display: none;
+  }
+}
+
+.col{
+  padding: 0 10px;
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+
+.row.large-gap{
+  margin: 0 -40px;
+  & > .col{
+    padding: 0 40px;
+  }
+  & > .col{
+    position: relative;
+    &:after{
+      border-left: $global-border;
+      border-left-style: dashed;
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    &:last-child:after{
+      display: none;
+    }
+  }
+}

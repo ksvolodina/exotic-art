@@ -1,0 +1,197 @@
+/*---------------------------------------------------- show ----------------------------------------------------*/
+.show-items.large-show{
+  .col{
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+  p{
+    width: 50%;
+  }
+  .show-item{
+    height: 500px;
+  }
+  h3{
+    @include gradient($basic-color, transparent, bottom, top);
+    bottom: 0;
+    color: $inverted-color;
+    left: 0;
+    margin-bottom: 0;
+    opacity: 1;
+    padding: 60px 40px 20px;
+    position: absolute;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 5;
+  }
+  //@include respond-to(custom-medium-down){
+  //  p:not(.title){
+  //    display: none;
+  //  }
+  //}
+  //@include respond-to(custom-small-down){
+  //  .show-item{
+  //    height: 350px;
+  //  }
+  //}
+  //@include respond-to(custom-xsmall-down){
+  //  .show-item{
+  //    height: 250px;
+  //  }
+  //}
+}
+
+/*---------------------------------------------------- video ----------------------------------------------------*/
+.with-video{
+  text-align: center;
+  .columns{
+    display: inline-block;
+    float: none;
+    margin: 0 -2px 20px;
+  }
+}
+
+.video-wrapper{
+  padding: 56.25% 0 0 0;
+  position: relative;
+}
+
+.video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*---------------------------------------------------- gallery ----------------------------------------------------*/
+.show-gallery{
+  @include flexbox;
+  @include justify-content-center;
+
+  li{
+    width: 100%;
+  }
+
+  a{
+    @include a-block;
+    @include img-wrapper;
+    @include block-hover;
+    @include block-hover-height;
+    height: 380px;
+    width: 100%;
+
+    img{
+      object-fit: cover;
+      height: 100%;
+      width: auto;
+    }
+    img.vertical{
+      height: auto;
+      width: 100%;
+    }
+    //@include respond-to(custom-small-down){
+    //  height: auto;
+    //  text-align: center;
+    //  img{
+    //    @include transform-translate(0, 0);
+    //    display: inline-block;
+    //    height: auto !important;
+    //    max-height: 400px !important;
+    //    position: static;
+    //    width: auto !important;
+    //    max-width: 100%;
+    //  }
+    //}
+    //@include respond-to(custom-not-touch){
+    //  &:hover, &:active{
+    //    img.vertical{
+    //      width: 105%;
+    //    }
+    //  }
+    //}
+  }
+
+  &.small-gallery{
+    @include justify-content-start;
+    a{
+      height: 250px;
+      //@include respond-to(custom-small-down){
+      //  height: 200px;
+      //}
+    }
+    &.large-grid-4{
+      a{
+        height: 285px;
+      }
+    }
+  }
+
+}
+
+/*---------------------------------------------------- promo ----------------------------------------------------*/
+.promo-block.large-promo{
+  .promo-img{
+    cursor: pointer;
+    min-height: 540px;
+  }
+  .promo-title{
+    @include flexbox;
+    @include flex-wrap;
+    @include align-items(center);
+    padding-left: 60px;
+  }
+  h1, .btn{
+    margin-right: 20px;
+    margin-bottom: 5px;
+    margin-top: 0;
+  }
+  .promo-txt{
+    padding: 40px;
+  }
+  .promo-time{
+    font-size: 14px;
+    opacity: .6;
+  }
+  .promo-info{
+    //@include respond-to(custom-not-touch){
+    //  &:hover, &:active{
+    //    .promo-title{
+    //      background: $first-color;
+    //      box-shadow: none;
+    //      color: $inverted-color;
+    //    }
+    //    .promo-txt{
+    //      background: $inverted-color;
+    //      box-shadow: $global-box-shadow;
+    //      color: $basic-color;
+    //    }
+    //  }
+    //}
+  }
+  //@include respond-to(custom-medium-down){
+  //  padding: 0 10px;
+  //  .promo-title{
+  //    @include justify-content-center;
+  //    @include flex-column;
+  //    padding: 20px 10px;
+  //  }
+  //  h1, .btn{
+  //    margin-right: 0;
+  //  }
+  //  .btn{
+  //    margin-bottom: 0;
+  //  }
+  //  .promo-txt{
+  //    padding: 20px 10px;
+  //  }
+  //  .promo-info{
+  //    margin-left: -10px;
+  //    margin-right: -10px;
+  //    min-width: 100%;
+  //    width: auto;
+  //  }
+  //  .promo-img{
+  //    min-height: 250px;
+  //  }
+  //}
+}

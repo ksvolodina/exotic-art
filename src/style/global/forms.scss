@@ -1,0 +1,51 @@
+.form-item{
+  margin: .75rem 0;
+  & > *{
+    @include align-middle;
+  }
+  label{
+    padding-right: .625rem;
+    text-align: left;
+    width: percentage(5/12)-1%;
+  }
+  label + *{
+    width: percentage(7/12)-1%;
+  }
+  &.align-top > *{
+    vertical-align: top !important;
+  }
+  //@include respond-to(custom-xsmall-down){
+  //  label, label + *{
+  //    width: 100%;
+  //  }
+  //  label{
+  //    margin-bottom: .3rem;
+  //  }
+  //}
+  &.required{
+    label{
+      &:after{
+        content: '*';
+        color: $error-color;
+        margin-left: .3rem;
+      }
+    }
+  }
+  &.small{
+    text-align: left;
+    label + *{
+      width: 30%;
+      //@include respond-to(custom-xsmall-down){
+      //  width: 50%;
+      //}
+    }
+  }
+}
+
+form [type="submit"]{
+  margin-top: 1.4375rem;
+}
+
+.js-datepicker{
+  //background:  transparent url(../img/datepicker.png) no-repeat right;
+}

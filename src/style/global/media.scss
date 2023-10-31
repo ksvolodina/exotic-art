@@ -1,0 +1,81 @@
+//Смартфоны — разрешение экрана от 320 пикселов.
+//Планшеты — разрешение экрана от 768 пикселов.
+//Нетбуки — разрешение экрана от 1024 пикселов.
+//Мониторы FULL-HD — разрешение экрана от 1920 пикселов.
+
+$custom-min: 0;
+
+$custom-small-min: 320px;
+$custom-small-max: 767px;
+
+$custom-medium-min: 768px;
+$custom-medium-max: 1023px;
+
+$custom-large-min: 1024px;
+$custom-large-max: 1919px;
+
+$custom-xlarge-min: 1920px;
+
+@mixin respond-to($media) {
+
+  @if media == small-up{
+    @media only screen and (min-width: $custom-small-min){
+      @content;
+    }
+    //320 and up
+  }@else if $media == small-only{
+    @media only screen and (min-width: $custom-small-min) and (max-width: $custom-small-max){
+      @content;
+    }
+    //320 - 767
+  }
+
+  @else if $media == medium-up{
+    @media only screen and (min-width: $custom-medium-min){
+      @content;
+    }
+    //768 and up
+  } @else if $media == medium-only{
+    @media only screen and (min-width: $custom-medium-min) and (max-width: $custom-medium-max){
+      @content;
+    }
+    //768 - 1023
+  }
+
+  @else if $media == large-up{
+    @media only screen and (min-width: $custom-large-min){
+      @content;
+    }
+    //1024 and up
+  } @else if $media == large-only{
+    @media only screen and (min-width: $custom-large-min) and (max-width: $custom-large-max){
+      @content;
+    }
+    //1024 - 1919
+  }
+
+  @else if $media == xlarge-up{
+    @media only screen and (min-width: $custom-xlarge-min){
+      @content;
+    }
+    //1920 and up
+  }
+}
+
+/*for custom media for resizing window on desktop*/
+@mixin respond-to-custom($custom-min, $custom-max){
+  @media only screen and (min-width: $custom-min) and (max-width: $custom-max){
+    @content;
+  }
+}
+
+
+@mixin hover{
+  @media (hover: hover) and (pointer: fine){
+    &:hover{
+      @content;
+    }
+  }
+}
+
+

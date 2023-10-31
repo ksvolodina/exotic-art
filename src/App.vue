@@ -1,30 +1,60 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="app">
+
+    <Header
+        :small-screen="smallScreen"
+    />
+
+    <Nav v-if="!smallScreen"/>
+
+    <main>
+      <RouterView/>
+    </main>
+
+    <BeforeFooter/>
+
+    <Footer/>
+
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Header from "@/components/template/Header";
+import Nav from "@/components/template/Nav";
+import BeforeFooter from "@/components/template/BeforeFooter";
+import Footer from "@/components/template/Footer";
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  data() {
+    return {
+      navShow: false,
+      smallScreen: true,
     }
+  },
+
+  components: {Footer, BeforeFooter, Nav, Header},
+
+  methods: {
+
+    getScreenWidth() {
+      if (window.innerWidth > 767) {
+        this.smallScreen = false
+      } else {
+        this.smallScreen = true
+      }
+    },
+
+  },
+
+  mounted() {
+    window.addEventListener('resize', this.getScreenWidth)
+    this.getScreenWidth()
+  },
+
+  computed: {
   }
 }
+</script>
+
+<style lang="scss">
 </style>

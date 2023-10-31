@@ -1,0 +1,202 @@
+/*--------------------------------------------------- news pages -----------------------------------------------------*/
+.news-info{
+  position: relative;
+  &.video{
+    .news-txt{
+      @include transform-translate(0, 0);
+      box-shadow: none;
+      margin: 0 auto 35px;
+      padding: 0 20px;
+      position: static;
+      max-width: $row-width/12*8;
+      width: 100%;
+    }
+    .signature{
+      margin-top: 0;
+      text-align: center;
+      &:before{
+        display: none;
+      }
+    }
+  }
+}
+
+.news-img{
+  @include a-block;
+  @include img-wrapper;
+  height: 380px;
+  max-width: $row-width/12*8 - 32px;
+  width: 100%;
+  z-index: 0;
+  //@include respond-to(custom-xlarge-down){
+  //  margin: 0 auto;
+  //}
+  //@include respond-to(custom-medium-down){
+  //  height: auto;
+  //  img{
+  //    @include transform-translate(0, 0);
+  //    position: static;
+  //  }
+  //}
+}
+
+.news-txt{
+  //@extend .xsmall-12;
+  //@extend .medium-8;
+  //@extend .xlarge-6;
+  @include transform-translate(0, -50%);
+  background: $inverted-color;
+  box-shadow: $global-box-shadow;
+  padding: 30px 40px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  z-index: 1;
+  //@include respond-to(custom-xlarge-down){
+  //  @include transform-translate(0, 0);
+  //  box-shadow: none;
+  //  margin: 0 auto 20px;
+  //  padding: 0 10px;
+  //  position: static;
+  //  width: 100%;
+  //}
+  .btn.tag{
+    //@extend .xsmall;
+  }
+}
+
+.signature{
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 30px;
+  opacity: .7;
+  position: relative;
+  &:before{
+    border-top: 1px solid $basic-color-light;
+    content: '';
+    display: block;
+    margin-bottom: 10px;
+    width: 40%;
+  }
+  a{
+    border-bottom: none;
+  }
+  //@include respond-to(custom-xlarge-down){
+  //  display: none;
+  //}
+}
+
+.text{
+  //@extend .xsmall-12;
+  //@extend .medium-8;
+  //@extend .xlarge-6;
+  margin: 40px auto;
+  padding: 0 10px;
+  //@include respond-to(custom-medium-down){
+  //  margin-bottom: 20px;
+  //  margin-top: 20px;
+  //}
+}
+
+
+/*-------------------------------------------------- all news -------------------------------------------------------*/
+.news-item{
+  @include transition;
+  @include a-block;
+  @include block-hover;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  .description{
+    @include transform-translate(-50%, 0);
+    @include transition;
+    color: $inverted-color;
+    display: block;
+    left: 50%;
+    opacity: 0;
+    padding: 20px;
+    position: absolute;
+    top: -50px;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+  }
+
+  //@include respond-to(custom-not-touch){
+  //  &:hover, &:active{
+  //    top: -10px;
+  //    .description{
+  //      opacity: 1;
+  //      top: 0;
+  //    }
+  //  }
+  //}
+  img{
+    height: auto;
+    width: 100%;
+  }
+}
+
+.news-item-txt{
+  @include gradient($basic-color, transparent, bottom, top);
+  bottom: 0;
+  color: $inverted-color;
+  display: block;
+  font-weight: 500;
+  left: 0;
+  margin-bottom: 0;
+  padding: 50% 20px 20px;
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  z-index: 5;
+  time{
+    display: block;
+    font-size: 12px;
+  }
+}
+
+
+//@include respond-to(custom-small-down){
+//  .news-item{
+//    border-bottom: 1px solid $light-color;
+//    text-align: center;
+//
+//    img{
+//      height: 300px;
+//      width: auto;
+//    }
+//  }
+//  .news-item-txt{
+//    background: none;
+//    color: $basic-color;
+//    padding: 20px;
+//    position: static;
+//  }
+//}
+
+
+.frontpage-news{
+  //@include respond-to(custom-xlarge-up){
+  //  .col{
+  //    @for $i from 2 through 10 {
+  //      &:first-child:nth-last-child(#{$i}),
+  //      &:first-child:nth-last-child(#{$i}) ~ .col {
+  //        width: 100%/$i;
+  //      }
+  //    }
+  //  }
+  //}
+  //@include respond-to(custom-large-down){
+  //  .col:last-child{
+  //    display: none;
+  //  }
+  //}
+  //@include respond-to(custom-medium-down){
+  //  .col:nth-last-child(2){
+  //    display: none;
+  //  }
+  //}
+}

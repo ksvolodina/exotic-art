@@ -1,0 +1,51 @@
+/*----------------------------------------------------- order -------------------------------------------------------*/
+.contacts-bg{
+  &:after{
+    @include gradient($inverted-color, transparent, bottom, top);
+    bottom: 0;
+    content: '';
+    height: 50%;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+  }
+  overflow: hidden;
+  position: relative;
+  img{
+    @include transform-translate(-32%, -50%);
+    height: 101%;
+    left: 50%;
+    max-width: none;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    z-index: -1;
+  }
+  table{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+  //@include respond-to(custom-medium-down){
+  //  img, &:after{
+  //    display: none;
+  //  }
+  //  .contacts-title p{
+  //    padding-top: 0;
+  //  }
+  //}
+}
+
+.contacts-title{
+  background: $first-color;
+  color: $inverted-color;
+  padding: 40px 20px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  p{
+    padding-top: 20px;
+  }
+}
+
