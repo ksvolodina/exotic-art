@@ -1,5 +1,5 @@
 .modal{
-  border-radius: $global-border-radius;
+  border-radius: $border-radius;
   background: $inverted-color;
   left: 50%;
   //opacity: 0;
@@ -336,7 +336,7 @@ button {
 // Close icon
 body .mfp-close {
   background: $first-color;
-  border-radius: 0 0 0 $global-border-radius;
+  border-radius: 0 0 0 $border-radius;
   cursor: pointer !important;
   height: 40px;
   width: 40px;
@@ -354,10 +354,10 @@ body .mfp-close {
   //  }
   //}
   &:before{
-    @include transform-rotate(-45deg);
+    transform: rotate(-45deg);
   }
   &:after{
-    @include transform-rotate(45deg);
+    transform: rotate(45deg);
   }
   &:before, &:after{
     background: $inverted-color;

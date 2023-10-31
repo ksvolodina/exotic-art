@@ -1,7 +1,7 @@
 .accordion-item{
   counter-increment: section;
   .accordion-title:before{
-    @include transform-translate(0, -50%);
+    transform: translate(0, -50%);
     color: $light-color;
     content: counter(section);
     font-size: 35px;

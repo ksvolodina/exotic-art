@@ -1,5 +1,5 @@
-import Button from "@/components/UI/Button";
+import ButtonLink from "@/components/UI/ButtonLink";
 
 export default [
-    Button
+    ButtonLink
 ]

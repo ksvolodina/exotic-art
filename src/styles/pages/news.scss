@@ -46,7 +46,7 @@
   //@extend .xlarge-6;
   @include transform-translate(0, -50%);
   background: $inverted-color;
-  box-shadow: $global-box-shadow;
+  box-shadow: $box-shadow;
   padding: 30px 40px;
   position: absolute;
   top: 50%;

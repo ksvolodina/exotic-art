@@ -13,42 +13,24 @@
       v-if="smallScreen"
     />
 
-    <ul class="contacts">
-      <li v-if="smallScreen" class="contacts-item">
-        <a href="https://t.me/kseniasamba" class="btn btn-small btn-white btn-rounded">Telegram</a>
-      </li>
-
-      <li v-if="smallScreen"  class="contacts-item">
-        <a href="https://wa.me/79817752781" class="btn btn-small btn-white btn-rounded">WhatsApp</a>
-      </li>
-
-      <li v-if="!smallScreen" class="contacts-item">
-        <span class="">Санкт-Петербург</span>
-      </li>
-
-      <li class="contacts-item">
-        <a v-if="smallScreen" href="tel:+79817752781" class="btn btn-small btn-white btn-rounded">Позвонить</a>
-        <a v-else href="tel:+79817752781">+7 (981) 775-27-81</a>
-      </li>
-    </ul>
+    <ContactsLinks
+        :small-screen="smallScreen"
+    />
 
     <RouterLink to="/" class="logo" title="На главную">
-      <img src="@/assets/logo.svg" alt="">
+      <img src="@/assets/img/logo.svg" alt="">
     </RouterLink>
 
-    <RouterLink to="/contacts" class="btn nav-btn">Заказать шоу</RouterLink>
+    <ButtonLink to="/contacts" class="nav-btn">Заказать шоу</ButtonLink>
 
   </header>
 </template>
 
 <script>
-import Button from "@/components/UI/Button";
-import Nav from "@/components/template/Nav";
-
+import ButtonLink from "@/components/UI/ButtonLink";
 export default {
   name: "Header",
-  components: {Nav, Button},
-
+  components: {ButtonLink},
   data() {
     return {
       show: false,
@@ -64,5 +46,115 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+header {
+  background: $light-color;
+  box-shadow: $box-shadow inset;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0 ($row-padding + 5px);
+  position: relative;
+
+  &:before {
+    background: $basic-color;
+    content: '';
+    display: block;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  @include respond-to(medium-up) {
+    background: none;
+    box-shadow: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    &:before {
+      display: none;
+    }
+  }
+
+}
+
+.logo {
+  @include transition;
+  height: auto;
+  margin: ($row-padding + 5px) auto;
+  order: -1;
+  width: min(90%, 300px);
+
+  @include respond-to(medium-up) {
+    margin: 0;
+    order: initial;
+  }
+
+  @include hover {
+    transform: scale(1.05);
+  }
+
+}
+
+.nav-icon {
+  height: 60px;
+  width: 70px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100500;
+  &:before, &:after {
+    @include transition;
+    border-top: 3px solid $inverted-color;
+    content: '';
+    display: block;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    width: 30px;
+  }
+  &:before {
+    border-bottom: 3px solid $inverted-color;
+    height: 20px;
+  }
+  &.active {
+    background: lighten($basic-color, 5%);
+    &:before, &:after{
+      margin-top: -2px;
+      margin-left: -15px;
+      width: 30px;
+    }
+    &:before {
+      border-bottom: none;
+      height: auto;
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+  @include respond-to(medium-up) {
+    display: none !important;
+  }
+}
+
+.nav-btn {
+  background: $inverted-color;
+  color: $basic-color;
+  position: absolute;
+  right: $row-padding;
+  top: 14px;
+  z-index: 1;
+
+  @include respond-to(medium-up) {
+    background: $first-color;
+    color: $inverted-color;
+    position: static;
+  }
+}
 </style>

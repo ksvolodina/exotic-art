@@ -1,9 +1,7 @@
 <template>
   <div class="app">
 
-    <Header
-        :small-screen="smallScreen"
-    />
+    <Header :small-screen="smallScreen"/>
 
     <Nav v-if="!smallScreen"/>
 
@@ -13,7 +11,7 @@
 
     <BeforeFooter/>
 
-    <Footer/>
+    <Footer :small-screen="smallScreen"/>
 
   </div>
 </template>
@@ -27,7 +25,6 @@ import Footer from "@/components/template/Footer";
 export default {
   data() {
     return {
-      navShow: false,
       smallScreen: true,
     }
   },
@@ -57,4 +54,33 @@ export default {
 </script>
 
 <style lang="scss">
+html,
+body{
+  height: 100%;
+}
+
+.app{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+header, footer{
+  @include transition;
+  display: block;
+  width: 100%;
+}
+
+main{
+  display: block;
+  padding: 0;
+  margin: 0 auto;
+  flex: 1;
+  width: 100%;
+}
+
+header, footer{
+  @include transition;
+  width: 100%;
+}
 </style>

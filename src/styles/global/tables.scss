@@ -92,7 +92,7 @@ table.small{
   @extend .small;
   tr{
     th, td{
-      border-right: $global-border-dark;
+      border-right: $border-dark;
       padding: 5px 20px;
       &:first-child{
         padding-left: 0;

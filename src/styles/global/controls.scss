@@ -2,6 +2,11 @@ $input-height: 32px;
 $input-border: 1px solid darken($light-color, 10%);
 $input-font: 400 15px/1.2 $basic-font-family;
 
+@mixin align-middle{
+  display: inline-block;
+  vertical-align: middle;
+}
+
 label{
   font-size: 13px;
   font-weight: 500;
@@ -211,7 +216,6 @@ input[type="checkbox"]{
   }
 
   & + label{
-    @include user-select-none;
     display: block;
     line-height: 1.6;
     margin-top: 0;
@@ -219,6 +223,7 @@ input[type="checkbox"]{
     min-height: 22px;
     padding-left: 30px;
     position: relative;
+    user-select: none;
     //@include respond-to(custom-not-touch){
     //  &:hover, &:focus{
     //    &:before{
@@ -234,9 +239,8 @@ input[type="checkbox"]{
   }
   & + label:before{
     @include align-middle;
-    @include user-select-none;
     background-color: lighten($light-color, 15%);
-    border: $global-border-dark;
+    border: $border-dark;
     content: '';
     height: 20px;
     margin-right: 5px;
@@ -244,6 +248,7 @@ input[type="checkbox"]{
     position: absolute;
     top: -1px;
     width: 20px;
+    user-select: none;
   }
 
   &:checked + label{
@@ -252,7 +257,16 @@ input[type="checkbox"]{
       border-color: $first-color;
     }
     &:after{
-      @include check-pseudo($inverted-color);
+      background: none;
+      border: 2px solid $inverted-color;
+      border-right-width: 0;
+      border-top-width: 0;
+      content: '';
+      display: block;
+      height: 5px;
+      position: absolute;
+      transform: rotate(-45deg) translate(0, -100%);
+      width: 13px;
       left: 9px;
       top: 9px;
     }
@@ -298,13 +312,13 @@ input[type="radio"]{
   }
   & + label{
     @include align-middle;
-    @include user-select-none;
     font-weight: 400;
     min-height: 22px;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 30px;
     position: relative;
+    user-select: none;
     //@include respond-to(custom-not-touch){
     //  &:hover, &:focus{
     //    &:before{
@@ -321,9 +335,8 @@ input[type="radio"]{
   }
   & + label:before{
     @include align-middle;
-    @include user-select-none;
     background-color: lighten($light-color, 15%);
-    border: $global-border-dark;
+    border: $border-dark;
     border-radius:  50%;
     content: '';
     height: 20px;
@@ -332,6 +345,7 @@ input[type="radio"]{
     position: absolute;
     top: -2px;
     width: 20px;
+    user-select: none;
   }
   &:checked + label{
     &::before{
@@ -339,7 +353,7 @@ input[type="radio"]{
       border-color: $basic-color;
     }
     &:after{
-      @include transform-translate(-50%, -50%);
+      transform: translate(-50%, -50%);
       background: $inverted-color;
       border-radius: 50%;
       content: '';
@@ -491,19 +505,41 @@ body button, body [type="submit"], body [type="button"]{
     }
   }
 
-  &-white{
-    background: $inverted-color;
-    border: 2px solid $basic-color-light;
+  &-inverted-basic, &-inverted{
+    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+    @include hover {
+      &[disabled], &.disabled{
+        background: transparent;
+      }
+    }
+  }
+
+  &-inverted{
+    border-color: $inverted-color;
+    color: $inverted-color;
+    @include hover {
+      background: $inverted-color;
+      color: $first-color;
+      &[disabled], &.disabled{
+        color: $inverted-color;
+      }
+    }
+  }
+
+  &-inverted-basic{
+    border-color: $basic-color-light;
     color: $basic-color-light;
     @include hover {
       background: $basic-color-light;
       color: $inverted-color;
       &[disabled], &.disabled{
-        background: $inverted-color;
         color: $basic-color-light;
       }
     }
   }
+
 
   &-small{
     font-size: 14px;
@@ -540,8 +576,8 @@ body .btn[disabled], body .btn.disabled{
 
 
 .btns{
-  @include flexbox;
-  @include flex-wrap;
+  display: flex;
+  flex-wrap: wrap;
   margin: -5px;
   .btn{
     margin: 5px;

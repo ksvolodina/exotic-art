@@ -1,8 +1,8 @@
 .pagination{
-  @include flexbox;
+  display: flex;
   & > *{
     border-bottom: none;
-    border-radius: $global-border-radius;
+    border-radius: $border-radius;
     color: $basic-color-light;
     display: block;
     font-size: 13px;

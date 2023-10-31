@@ -41,7 +41,7 @@ $row-padding: 15px;
   & > .col{
     position: relative;
     &:after{
-      border-left: $global-border;
+      border-left: $border;
       border-left-style: dashed;
       content: '';
       display: block;

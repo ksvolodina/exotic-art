@@ -58,7 +58,7 @@
 
   h3{
     @include transform-rotate(-10deg);
-    box-shadow: $global-box-shadow;
+    box-shadow: $box-shadow;
     background: $inverted-color;
     top: 30%;
     display: inline-block;
@@ -285,7 +285,7 @@
 .promo-txt{
   @include transition;
   background: $inverted-color;
-  box-shadow: $global-box-shadow;
+  box-shadow: $box-shadow;
   font-size: 16px;
   margin-top: -20px;
   margin-bottom: 0;
