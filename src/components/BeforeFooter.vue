@@ -2,32 +2,33 @@
   <div class="light-block text-center">
     <div class="row">
 
-      <p class="h2">Мы рады быть частью ваших событий!</p>
+      <h2 class="h1 offset-top-0 offset-bottom-small">Мы рады быть частью ваших событий!</h2>
 
-      <p>
+      <p class="offset-bottom-small">
         На Вашем мероприятии все должно быть идеально.<br>
         Позвольте себе насладиться красотой.
       </p>
 
-      <ButtonLink to="/contacts" class="offset-top-20">Заказать шоу</ButtonLink>
+      <ButtonLink to="/contacts">Заказать шоу</ButtonLink>
 
     </div>
   </div>
 </template>
 
 <script>
+import ButtonLink from "@/components/UI/ButtonLink";
+
 export default {
   name: "BeforeFooter",
+  components: {ButtonLink},
 }
 </script>
 
 <style lang="scss" scoped>
 .light-block{
   background: $light-color;
-  margin-top: $offset;
   padding: $offset 0;
   @include respond-to(medium-up){
-    margin-top: $offset-large;
     padding: $offset-large 0;
   }
 }

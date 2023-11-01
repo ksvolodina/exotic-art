@@ -28,9 +28,14 @@
 
 <script>
 import ButtonLink from "@/components/UI/ButtonLink";
+import Nav from "@/components/template/Nav";
+import ContactsLinks from "@/components/template/ContactsLinks";
+
 export default {
   name: "Header",
-  components: {ButtonLink},
+
+  components: {ContactsLinks, Nav, ButtonLink},
+
   data() {
     return {
       show: false,

@@ -25,8 +25,12 @@
 </template>
 
 <script>
+import ContactsLinks from "@/components/template/ContactsLinks";
+
 export default {
   name: "Footer",
+
+  components: {ContactsLinks},
 
   props: {
     smallScreen: {

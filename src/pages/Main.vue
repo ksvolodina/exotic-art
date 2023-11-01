@@ -1,11 +1,13 @@
 <template>
-  <main>
-  </main>
+
+  <BeforeFooter/>
 </template>
 
 <script>
+import BeforeFooter from "@/components/BeforeFooter";
 export default {
-  name: "Main"
+  name: "Main",
+  components: {BeforeFooter}
 }
 </script>
 

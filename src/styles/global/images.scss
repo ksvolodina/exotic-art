@@ -1,0 +1,63 @@
+@mixin img-wrapper{
+  overflow: hidden;
+  position: relative;
+  img {
+    transform: translate(-50%, -50%);
+    height: auto;
+    position: absolute;
+    left: 50%;
+    max-width: none;
+    top: 50%;
+    width: 100%;
+  }
+}
+
+@mixin block-hover{
+  *{
+    @include transition;
+  }
+  img{
+    max-width: none;
+  }
+  &:before{
+    @include transition;
+    background: transparentize($basic-color-dark, .4);
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  @include hover {
+    &:before{
+      opacity: 1;
+    }
+  }
+}
+
+
+@mixin block-hover-height{
+  img{
+    height: 100%;
+    width: auto;
+  }
+  @include hover {
+    img{
+      height: 105%;
+    }
+  }
+}
+@mixin block-hover-width{
+  //@include respond-to(custom-not-touch){
+  //  &:hover, &:active{
+  //    img{
+  //      width: 105%;
+  //    }
+  //  }
+  //}
+}

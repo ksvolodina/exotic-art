@@ -1,13 +1,47 @@
 <template>
 
+  <Breadcrumbs v-if="smallScreen"/>
+
+  <div class="row">
+    <h1>Репертуар</h1>
+
+    <ShowList
+        class="offset-bottom"
+        :shows="shows"
+    />
+
+  </div>
+
+  <BeforeFooter/>
+
 </template>
 
 <script>
+import {shows} from "@/shows";
+import ShowList from "@/components/ShowList";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BeforeFooter from "@/components/BeforeFooter";
+
 export default {
-  name: "Shows"
+  name: "Shows",
+
+  components: {BeforeFooter, Breadcrumbs, ShowList},
+
+  data() {
+    return {
+      shows: shows
+    }
+  },
+
+  props: {
+    smallScreen: {
+      type: Boolean,
+      required: true,
+    }
+  },
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

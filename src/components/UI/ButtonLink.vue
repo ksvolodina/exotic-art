@@ -1,13 +1,7 @@
 <template>
-
   <RouterLink to="" class="btn">
     <slot></slot>
   </RouterLink>
-<!--  <button-->
-<!--    class="btn"-->
-<!--  >-->
-<!--    <slot></slot>-->
-<!--  </button>-->
 </template>
 
 <script>

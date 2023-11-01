@@ -6,6 +6,7 @@ import Cost from "@/pages/Cost";
 import Blog from "@/pages/Blog";
 import Contacts from "@/pages/Contacts";
 import About from "@/pages/About";
+import Show from "@/pages/Show";
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
   {
     path: '/shows',
     component: Shows
+  },
+  {
+    path: '/shows/:slug',
+    component: Show
   },
   {
     path: '/how',

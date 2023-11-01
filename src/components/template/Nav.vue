@@ -34,7 +34,7 @@ export default {
           path: '/cost'
         },
         {
-          name: 'Как мы работаем',
+          name: 'Как мы работаем?',
           path: '/how'
         },
         {

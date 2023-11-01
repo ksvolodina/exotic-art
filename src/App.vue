@@ -6,10 +6,8 @@
     <Nav v-if="!smallScreen"/>
 
     <main>
-      <RouterView/>
+      <RouterView :small-screen="smallScreen"/>
     </main>
-
-    <BeforeFooter/>
 
     <Footer :small-screen="smallScreen"/>
 
@@ -19,20 +17,18 @@
 <script>
 import Header from "@/components/template/Header";
 import Nav from "@/components/template/Nav";
-import BeforeFooter from "@/components/template/BeforeFooter";
 import Footer from "@/components/template/Footer";
 
 export default {
+  components: {Header, Nav, Footer},
+
   data() {
     return {
       smallScreen: true,
     }
   },
 
-  components: {Footer, BeforeFooter, Nav, Header},
-
   methods: {
-
     getScreenWidth() {
       if (window.innerWidth > 767) {
         this.smallScreen = false
@@ -40,16 +36,12 @@ export default {
         this.smallScreen = true
       }
     },
-
   },
 
   mounted() {
     window.addEventListener('resize', this.getScreenWidth)
     this.getScreenWidth()
   },
-
-  computed: {
-  }
 }
 </script>
 
