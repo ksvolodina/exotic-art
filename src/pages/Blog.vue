@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumbs v-if="smallScreen"/>
+  <Breadcrumbs/>
 
   <div class="row">
     <h1>Блог о нас и нашей работе</h1>
@@ -17,12 +17,6 @@ export default {
 
   components: {BeforeFooter, Breadcrumbs},
 
-  props: {
-    smallScreen: {
-      type: Boolean,
-      required: true,
-    }
-  },
 }
 </script>
 

@@ -12,18 +12,52 @@ const text = ''
 
 const duration = '3.5 мин'
 
-const videos = []
+const videos = ['https://player.vimeo.com/video/835498813']
 
-const images = []
+const imageFrontpage = require('@/assets/img/shows/white/frontpage.jpg')
 
+const imageList = require('@/assets/img/shows/white/list.jpg')
 
-export const white = {
+const imageMain = require('@/assets/img/shows/white/main.jpg')
+
+const imagesGallery = [
+    require('@/assets/img/shows/white/g1.jpg'),
+    require('@/assets/img/shows/white/g2.jpg'),
+    require('@/assets/img/shows/white/g3.jpg'),
+    require('@/assets/img/shows/white/g4.jpg'),
+    require('@/assets/img/shows/white/g5.jpg'),
+    require('@/assets/img/shows/white/g6.jpg'),
+    // require('@/assets/img/shows/gallery/white/7.jpg'),
+    // require('@/assets/img/shows/gallery/white/8.jpg'),
+    // require('@/assets/img/shows/gallery/white/9.jpg'),
+]
+
+const alt = 'Шоу на свадьбу в СПб'
+
+export const showWhite = {
     title,
-    subtitle,
     slug,
     description,
     text,
     duration,
     videos,
-    images,
+    imageMain,
+    imagesGallery,
+    alt,
+}
+
+export const frontpageWhite = {
+    title,
+    subtitle,
+    slug,
+    imageFrontpage,
+    alt,
+}
+
+export const showsWhite = {
+    title,
+    subtitle,
+    slug,
+    imageList,
+    alt,
 }

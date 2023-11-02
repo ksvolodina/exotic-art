@@ -21,12 +21,39 @@ $row-padding: 15px;
   margin-right: -$row-padding;
 }
 
+.flex-wrap {
+  @include row-reset;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .col {
   padding-left: $row-padding;
   padding-right: $row-padding;
   margin-bottom: $row-padding * 2;
-  max-width: 100%;
+  width: 100%;
 }
+
+
+$total-columns: 12;
+@mixin grid-class($size){
+  @for $i from 1 through $total-columns{
+    .#{$size}-#{$i}{
+      width: percentage(1/$i);
+    }
+  }
+}
+
+body{
+  @include respond-to(medium-up){
+    @include grid-class(medium);
+  }
+  @include respond-to(large-up){
+    @include grid-class(large);
+  }
+}
+
 
 //.row.large-gap{
 //  margin: 0 -40px;

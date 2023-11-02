@@ -105,7 +105,11 @@ h4, .h4 {
   margin-bottom: 10px;
 }
 
-// todo
+[class*="title"] {
+  text-wrap: balance;
+}
+
+  // todo
 .title-more {
   font-size: 14px;
   text-transform: none;

@@ -1,6 +1,6 @@
 <template>
 
-  <Breadcrumbs v-if="smallScreen"/>
+  <Breadcrumbs/>
 
   <div class="row">
     <h1>Репертуар</h1>
@@ -33,12 +33,6 @@ export default {
     }
   },
 
-  props: {
-    smallScreen: {
-      type: Boolean,
-      required: true,
-    }
-  },
 }
 </script>
 

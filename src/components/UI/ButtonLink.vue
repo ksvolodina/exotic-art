@@ -1,5 +1,5 @@
 <template>
-  <RouterLink to="" class="btn">
+  <RouterLink :to="to" class="btn">
     <slot></slot>
   </RouterLink>
 </template>
@@ -9,6 +9,10 @@ export default {
   name: "ButtonLink",
 
   props: {
+    to: {
+      type: String,
+      default: ''
+    },
     isLink:{
       type: String,
       default: 'link'

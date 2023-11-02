@@ -1,25 +1,9 @@
-@mixin img-wrapper{
+.img-wrapper {
+  @include transition;
   overflow: hidden;
   position: relative;
-  img {
-    transform: translate(-50%, -50%);
-    height: auto;
-    position: absolute;
-    left: 50%;
-    max-width: none;
-    top: 50%;
-    width: 100%;
-  }
-}
 
-@mixin block-hover{
-  *{
-    @include transition;
-  }
-  img{
-    max-width: none;
-  }
-  &:before{
+  &:before {
     @include transition;
     background: transparentize($basic-color-dark, .4);
     content: '';
@@ -34,30 +18,23 @@
   }
 
   @include hover {
+    img {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
     &:before{
       opacity: 1;
     }
   }
 }
 
-
-@mixin block-hover-height{
-  img{
-    height: 100%;
-    width: auto;
-  }
-  @include hover {
-    img{
-      height: 105%;
-    }
-  }
-}
-@mixin block-hover-width{
-  //@include respond-to(custom-not-touch){
-  //  &:hover, &:active{
-  //    img{
-  //      width: 105%;
-  //    }
-  //  }
-  //}
+.img {
+  @include transition;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  object-fit:cover;
+  position: absolute;
+  left: 50%;
+  max-width: none;
+  top: 50%;
+  width: 100%;
 }

@@ -6,7 +6,7 @@
     <Nav v-if="!smallScreen"/>
 
     <main>
-      <RouterView :small-screen="smallScreen"/>
+      <RouterView/>
     </main>
 
     <Footer :small-screen="smallScreen"/>
