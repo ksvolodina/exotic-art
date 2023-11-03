@@ -1,21 +1,27 @@
 <template>
     <ul class="flex-wrap">
       <li
-          class="show col medium-2 large-3"
+          class="show col medium-6 large-4"
           v-for="show in shows"
           :key="show.slug"
       >
-        <ShowItem :show="show"/>
+        <ImgItem
+            :title="show.title"
+            :subtitle="show.subtitle"
+            :link-src="`/shows/${show.slug}`"
+            :img-src="show.imageList"
+            :img-alt="show.alt"
+        />
       </li>
     </ul>
 </template>
 
 <script>
+import ImgItem from "@/components/ImgItem";
 
-import ShowItem from "@/components/ShowItem";
 export default {
   name: "ShowList",
-  components: {ShowItem},
+  components: {ImgItem},
   props: {
     shows: {
       type: Array,

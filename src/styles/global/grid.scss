@@ -11,12 +11,13 @@ $row-padding: 15px;
   max-width: $row-width;
   padding-left: $row-padding;
   padding-right: $row-padding;
+  width: 100%;
   &-full{
     max-width: 100%;
   }
 }
 
-@mixin row-reset {
+@mixin row-reset{
   margin-left: -$row-padding;
   margin-right: -$row-padding;
 }
@@ -26,6 +27,8 @@ $row-padding: 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-left: -$row-padding;
+  margin-right: -$row-padding;
 }
 
 .col {
@@ -35,12 +38,17 @@ $row-padding: 15px;
   width: 100%;
 }
 
+.flex-center{
+  display: flex;
+  justify-content: center;
+}
+
 
 $total-columns: 12;
 @mixin grid-class($size){
   @for $i from 1 through $total-columns{
     .#{$size}-#{$i}{
-      width: percentage(1/$i);
+      width: percentage($i/$total-columns);
     }
   }
 }
@@ -52,6 +60,11 @@ body{
   @include respond-to(large-up){
     @include grid-class(large);
   }
+}
+
+[class*='medium-'],
+[class*='large-'] {
+  width: 100%;
 }
 
 

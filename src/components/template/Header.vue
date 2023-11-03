@@ -11,6 +11,7 @@
     <Nav
       :class="{'active': show}"
       v-if="smallScreen"
+      @navClick="closeNav"
     />
 
     <ContactsLinks
@@ -48,6 +49,13 @@ export default {
       required: true,
     }
   },
+
+  methods: {
+    closeNav() {
+      if (this.smallScreen) this.show = !this.show
+    }
+  },
+
 }
 </script>
 

@@ -10,6 +10,7 @@
             :to="link.path"
             exact-active-class="active"
             class="nav-item"
+            @click="$emit('navClick')"
         >
           {{ link.name }}
         </RouterLink>
@@ -53,7 +54,6 @@ export default {
     }
   },
 
-
 }
 </script>
 
@@ -89,7 +89,6 @@ nav {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 0;
 
   @include respond-to(medium-up) {
     align-items: center;

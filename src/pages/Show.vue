@@ -12,7 +12,7 @@
       </div>
 
       <div class="show-main-txt">
-        <p v-html="show.description"/>
+        <p v-html="show.description" class="show-main-description"/>
         <p class="show-main-time">Продолжительность номера — {{ show.duration}}</p>
       </div>
 
@@ -23,9 +23,9 @@
     </a>
   </div>
 
-  <p v-html="show.text" class="row medium-2 offset-top offset-bottom"/>
+  <p v-html="show.text" class="row medium-6 offset-top offset-bottom"/>
 
-  <ul class="row show-gallery offset-top-20">
+  <ul class="row show-gallery">
     <li
         v-for="(image, index) in show.imagesGallery"
         :key="index"
@@ -36,12 +36,12 @@
   </ul>
 
   <h2 id="video" class="row offset-top-20">Видео номера</h2>
-  <div class="row with-video">
+  <div class="row">
     <ul class="flex-wrap">
       <li
           v-for="(video, index) in show.videos"
           :key="index"
-          class="col medium-2"
+          class="col medium-6"
       >
         <VideoItem :src="video"/>
       </li>
@@ -132,6 +132,12 @@ export default {
       left: 20px;
       padding: 20px 60px 20px 40px;
       position: relative;
+    }
+  }
+
+  &-description {
+    @include respond-to(large-up) {
+      width: 90%;
     }
   }
 

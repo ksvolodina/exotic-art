@@ -17,14 +17,17 @@
     z-index: 2;
   }
 
-  @include hover {
-    img {
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-    &:before{
-      opacity: 1;
+  &:not(.no-hover) {
+    @include hover {
+      img {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+      &:before{
+        opacity: 1;
+      }
     }
   }
+
 }
 
 .img {
