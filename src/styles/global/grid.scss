@@ -12,9 +12,6 @@ $row-padding: 15px;
   padding-left: $row-padding;
   padding-right: $row-padding;
   width: 100%;
-  &-full{
-    max-width: 100%;
-  }
 }
 
 @mixin row-reset{
@@ -67,6 +64,12 @@ body{
   width: 100%;
 }
 
+.medium-up-show {
+  display: none;
+  @include respond-to(medium-up){
+    display: block;
+  }
+}
 
 //.row.large-gap{
 //  margin: 0 -40px;

@@ -44,6 +44,7 @@
 import BeforeFooter from "@/components/BeforeFooter";
 import VideoItem from "@/components/VideoItem";
 import ImgItem from "@/components/ImgItem";
+import {team} from "@/info/team";
 
 export default {
   name: "About",
@@ -51,24 +52,7 @@ export default {
 
   data() {
     return {
-      team: [
-        {
-          title: 'Ксения',
-          img: require('@/assets/img/team/ksenia.jpg'),
-        },
-        {
-          title: 'Алена',
-          img: require('@/assets/img/team/alena.jpg')
-        },
-        {
-          title: 'Мария',
-          img: require('@/assets/img/team/maria.png')
-        },
-        {
-          title: 'Елена',
-          img: require('@/assets/img/team/elena.jpg')
-        },
-      ],
+      team: team,
     }
   },
 }

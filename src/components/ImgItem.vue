@@ -75,7 +75,7 @@ export default {
     width: 100%;
 
     @include hover {
-      .show-subtitle{
+      .img-subtitle{
         opacity: 1;
       }
     }

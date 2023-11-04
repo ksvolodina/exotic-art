@@ -30,8 +30,8 @@ $offset: 20px;
 $offset-large: 40px;
 
 $border-radius: 10px;
-$border: 1px solid $light-color;
-$border-dark: 1px solid darken($light-color, 10%);
+$border: 1px solid lighten($basic-color-light, 40%);
+$border-dark: 1px solid $basic-color-light;
 
 // Transition
 
@@ -57,6 +57,7 @@ body {
   font: 400 16px/1.5 $basic-font-family;
   min-width: 320px;
   max-width: 100%;
+  overflow-x: hidden;
 }
 
 // Typo
@@ -87,9 +88,11 @@ h2, .h2 {
   font-size: 20px;
   margin-bottom: $offset;
   text-align: center;
+  margin-bottom: $offset;
 
   @include respond-to(large-up) {
     font-size: 24px;
+    margin-bottom: $offset-large;
   }
 }
 
@@ -97,6 +100,7 @@ h3, .h3 {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: $offset;
+  text-align: center;
 }
 
 h4, .h4 {

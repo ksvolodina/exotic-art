@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Main from "@/pages/Main";
-import Shows from "@/pages/Shows";
+import ShowList from "@/pages/ShowList";
 import How from "@/pages/How";
 import Cost from "@/pages/Cost";
 import Blog from "@/pages/Blog";
@@ -15,7 +15,7 @@ const routes = [
   },
   {
     path: '/shows',
-    component: Shows
+    component: ShowList
   },
   {
     path: '/shows/:slug',

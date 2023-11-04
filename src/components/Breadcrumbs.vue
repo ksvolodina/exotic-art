@@ -14,6 +14,7 @@ export default {
 
 <style lang="scss" scoped>
 .breadcrumbs {
+  border-bottom: $border;
   color: $basic-color-light;
   font-size: 13px;
   line-height: 1.3;
@@ -22,7 +23,7 @@ export default {
   text-align: center;
 
   @include respond-to(medium-up) {
-    text-align: left;
+    display: none;
   }
 
   &-link {

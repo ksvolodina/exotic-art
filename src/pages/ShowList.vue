@@ -1,4 +1,10 @@
 <template>
+
+  <Breadcrumbs/>
+
+  <div class="row">
+    <h1>Репертуар</h1>
+
     <ul class="flex-wrap">
       <li
           class="show col medium-6 large-4"
@@ -14,25 +20,32 @@
         />
       </li>
     </ul>
+
+  </div>
+
+  <BeforeFooter/>
+
 </template>
 
 <script>
+import {shows} from "@/info/shows";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import BeforeFooter from "@/components/BeforeFooter";
 import ImgItem from "@/components/ImgItem";
 
 export default {
   name: "ShowList",
-  components: {ImgItem},
-  props: {
-    shows: {
-      type: Array,
-      required: true,
+
+  components: {BeforeFooter, Breadcrumbs, ImgItem},
+
+  data() {
+    return {
+      shows: shows,
     }
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.show {
-  width: 100%;
-}
+
 </style>
