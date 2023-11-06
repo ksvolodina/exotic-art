@@ -195,7 +195,7 @@ export default {
   },
 
   mounted() {
-    this.subNavTop = this.$refs.subNav?.$el.offsetTop
+    this.subNavTop = this.$refs.subNav?.$el.getBoundingClientRect().top
     window.addEventListener('scroll', throttle(this.addFixed, 100))
     window.addEventListener('scroll', throttle(this.changeNav, 200))
   },
