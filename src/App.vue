@@ -18,6 +18,7 @@
 import Header from "@/components/template/Header";
 import Nav from "@/components/template/Nav";
 import Footer from "@/components/template/Footer";
+import {throttle} from "@/helpers/throttle";
 
 export default {
   components: {Header, Nav, Footer},
@@ -39,9 +40,13 @@ export default {
   },
 
   mounted() {
-    window.addEventListener('resize', this.getScreenWidth)
+    window.addEventListener('resize', throttle(this.getScreenWidth))
     this.getScreenWidth()
   },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', throttle(this.getScreenWidth))
+  }
 }
 </script>
 

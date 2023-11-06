@@ -25,11 +25,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.light-block{
-  background: $light-color;
-  padding: $offset 0;
-  @include respond-to(medium-up){
-    padding: $offset-large 0;
-  }
-}
 </style>

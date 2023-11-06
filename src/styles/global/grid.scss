@@ -26,13 +26,20 @@ $row-padding: 15px;
   justify-content: center;
   margin-left: -$row-padding;
   margin-right: -$row-padding;
+  margin-bottom: -$row-padding;
+  @include respond-to(medium-up) {
+    margin-bottom: -($row-padding * 2);
+  }
 }
 
 .col {
   padding-left: $row-padding;
   padding-right: $row-padding;
-  margin-bottom: $row-padding * 2;
+  margin-bottom: $row-padding;
   width: 100%;
+  @include respond-to(medium-up) {
+    margin-bottom: $row-padding * 2;
+  }
 }
 
 .flex-center{
@@ -68,6 +75,12 @@ body{
   display: none;
   @include respond-to(medium-up){
     display: block;
+  }
+}
+
+.medium-up-hide{
+  @include respond-to(medium-up){
+    display: none;
   }
 }
 

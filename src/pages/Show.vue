@@ -35,7 +35,7 @@
     </ul>
   </div>
 
-  <BeforeFooter/>
+  <BeforeFooter class="offset-top"/>
 
 </template>
 
@@ -67,7 +67,6 @@ export default {
   created() {
     this.getShow()
   },
-
 
 }
 </script>

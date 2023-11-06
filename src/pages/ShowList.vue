@@ -23,7 +23,7 @@
 
   </div>
 
-  <BeforeFooter/>
+  <BeforeFooter class="offset-top"/>
 
 </template>
 

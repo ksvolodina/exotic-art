@@ -495,12 +495,12 @@ body button, body [type="submit"], body [type="button"]{
   }
 
   &-light{
-    background: lighten($light-color, 15%);
+    background: $light-color;
     color: $basic-color;
     @include hover {
-      background: lighten($light-color, 5%);
+      background: darken($light-color, 10%);
       &[disabled], &.disabled{
-        background: transparent;
+        background: $light-color;
       }
     }
   }
@@ -550,17 +550,9 @@ body button, body [type="submit"], body [type="button"]{
     border-radius: 20px;
   }
 
-  &-tag{
-    @extend .btn-small;
-    @extend .btn-light;
-    @extend .btn-rounded;
-    border-radius: 10px;
-    color: $basic-color-light;
-    font-weight: 400;
-    &.active{
-      background: $first-color;
-      color: $inverted-color;
-    }
+  &-active{
+    background: $first-color;
+    color: $inverted-color;
   }
 
 }
@@ -572,4 +564,15 @@ body button, body [type="submit"], body [type="button"]{
 body .btn[disabled], body .btn.disabled{
   cursor: default;
   opacity: .5;
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  width: 100%;
+  @include respond-to(medium-up) {
+    gap: 10px;
+  }
 }

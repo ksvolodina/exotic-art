@@ -1,14 +1,12 @@
 table{
-  table-layout: fixed;
+  background: $inverted-color;
+  border: $border;
   border-collapse: collapse;
-  border: 1px solid $light-color;
+  table-layout: fixed;
   width: 100%;
   th, td{
     padding: 10px 20px;
-  }
-  tbody, thead{
-    min-width: 100% !important;
-    width: 100%;
+    text-align: center;
   }
   th{
     background: $basic-color-light;
@@ -19,20 +17,6 @@ table{
     &:nth-child(2n){
       background: transparentize($basic-color, .97);
     }
-    //@include respond-to(custom-not-touch){
-    //  &:hover, &:focus{
-    //    background: transparentize($basic-color, .94);
-    //  }
-    //}
-  }
-  .button{
-    margin: 2px 0;
-  }
-  .main-td{
-    width: 40%;
-  }
-  td.main-td{
-    text-align: left;
   }
 }
 

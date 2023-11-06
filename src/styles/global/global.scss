@@ -88,7 +88,6 @@ h2, .h2 {
   font-size: 20px;
   margin-bottom: $offset;
   text-align: center;
-  margin-bottom: $offset;
 
   @include respond-to(large-up) {
     font-size: 24px;
@@ -275,6 +274,24 @@ a:not([class]), .link {
   width: 100%;
 }
 
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.light-block{
+  background: $light-color;
+  padding: $offset 0;
+  @include respond-to(medium-up){
+    padding: $offset-large 0;
+  }
+}
+
+.light-block-large{
+  background: $light-color;
+  padding: $offset-large 0;
+}
+
 .top-line{
   border-top: 1px solid $light-color;
   margin-top: $offset;
@@ -286,12 +303,12 @@ a:not([class]), .link {
   }
 
   &-large {
-    margin-top: $offset-large;
-    padding-top: $offset-large;
+    margin-top: $offset;
+    padding-top: $offset;
 
     @include respond-to(medium-up) {
-      margin-top: $offset;
-      padding-top: $offset;
+      margin-top: $offset-large;
+      padding-top: $offset-large;
     }
   }
 }
