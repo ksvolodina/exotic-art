@@ -5,7 +5,7 @@
         :key="btn.title"
         :to="`#${btn.href}`"
         class="btn-small btn-rounded btn-inverted-basic"
-        @click="$emit('click', $event)"
+        @click.stop="$emit('click', $event)"
     >
       {{ btn.title }}
     </ButtonLink>
@@ -36,10 +36,11 @@ export default {
 
 .sub-nav{
   background: $inverted-color;
+  align-items: center;
+  height: 52px;
   padding: $offset/2 0;
 }
 .fixed {
-  @include transition;
   box-shadow: $box-shadow;
   position: fixed;
   top: 0;

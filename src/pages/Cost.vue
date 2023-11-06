@@ -8,12 +8,13 @@
       <span>Цены на предновогодние даты не меняются.</span>
     </p>
 
-    <SubNav
-        ref="subNav"
-        :btns-list="btns"
-        class="medium-up-hide offset-bottom"
-        @click="scrollToSection"
-    />
+    <div class="sub-nav-wrap medium-up-hide offset-bottom">
+      <SubNav
+          ref="subNav"
+          :btns-list="btns"
+          @click="scrollToSection"
+      />
+    </div>
   </div>
 
   <CostSection
@@ -163,9 +164,12 @@ export default {
 
     scrollToSection(event) {
       const idTarget = event.target.href.split('#').at(-1)
-      const sectionTop = document.getElementById(idTarget).offsetTop - 52
-      console.log(sectionTop)
-      window.scrollTo(0, sectionTop - 51)
+      const sectionTop = document.getElementById(idTarget).offsetTop
+
+      window.scrollTo({
+        top: sectionTop - 50,
+        behavior: 'smooth'
+      });
     },
 
     changeNav() {
@@ -201,8 +205,6 @@ export default {
     window.removeEventListener('scroll', throttle(this.changeNav, 200))
   },
 
-  // todo
-  // 2. сделать скролл до якоря выше на высоту меню, чтобы заголовки не скрывались
 }
 </script>
 
@@ -258,5 +260,8 @@ export default {
 
 .top-line.section {
   margin-top: 0;
+}
+.sub-nav-wrap {
+  height: 52px;
 }
 </style>
