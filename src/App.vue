@@ -40,12 +40,12 @@ export default {
   },
 
   mounted() {
-    window.addEventListener('resize', throttle(this.getScreenWidth))
+    window.addEventListener('resize', throttle(this.getScreenWidth, 100))
     this.getScreenWidth()
   },
 
   beforeDestroy() {
-    window.removeEventListener('resize', throttle(this.getScreenWidth))
+    window.removeEventListener('resize', throttle(this.getScreenWidth, 100))
   }
 }
 </script>

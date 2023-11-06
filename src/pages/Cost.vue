@@ -1,5 +1,6 @@
 <template>
-  <div class="row text-center border-bottom negative">
+
+  <div class="row text-center">
     <h1>Стоимость</h1>
     <p class="offset-bottom">
       Цены, приведенные ниже, действуют только в пределах КАД г. Санкт-Петербурга.<br>
@@ -10,19 +11,18 @@
     <SubNav
         ref="subNav"
         :btns-list="btns"
-        class="medium-up-hide"
+        class="medium-up-hide offset-bottom"
+        @click="scrollToSection"
     />
   </div>
 
-  <div
+  <CostSection
       v-for="(section, index) in sections"
       :key="section.id"
-  >
-    <CostSection
-        :section="section"
-        :class="{
-          'light-block': index%2 === 0
-        }"
+      :section="section"
+      :class="{
+        'light-block': index%2 === 0
+      }"
     >
 
       <ul v-if="index === 0" class="flex-wrap">
@@ -90,11 +90,10 @@
         </tr>
       </table>
     </CostSection>
-  </div>
 
-  <section class="top-line top-line-colored top-line-large offset-bottom">
+  <section id="payment" class="section top-line top-line-colored top-line-large offset-bottom">
     <div class="row">
-      <h2 id="payment" class="h1 offset-top-0">Варианты оплаты</h2>
+      <h2 class="h1 offset-top-0">Варианты оплаты</h2>
 
       <p class="medium-6 large-8 text-center centered offset-bottom-small">
         Мы работаем по предоплате от 50%.<br>
@@ -106,9 +105,10 @@
         <li
             v-for="payment in payments"
             :key="payment.title"
+            class="colored-li"
         >
           <h3 class="text-left">{{ payment.title }}</h3>
-          <ul class="txt offset-bottom-small">
+          <ul class="txt">
             <li
                 v-for="condition in payment.conditions"
                 :key="condition"
@@ -151,34 +151,78 @@ export default {
   methods: {
     addFixed() {
       const subNav = this.$refs.subNav?.$el
-      if (window.pageYOffset >= this.subNavTop && !subNav?.classList.contains('fixed')) {
+      const isSubNavFixed = subNav?.classList.contains('fixed')
+
+      if (subNav && window.pageYOffset >= this.subNavTop && !isSubNavFixed) {
         subNav.classList.add('fixed')
       }
-      if (window.pageYOffset < this.subNavTop && subNav?.classList.contains('fixed')) {
+      if (window.pageYOffset < this.subNavTop && isSubNavFixed) {
         subNav.classList.remove('fixed')
       }
     },
+
+    scrollToSection(event) {
+      const idTarget = event.target.href.split('#').at(-1)
+      const sectionTop = document.getElementById(idTarget).offsetTop - 52
+      console.log(sectionTop)
+      window.scrollTo(0, sectionTop - 51)
+    },
+
+    changeNav() {
+      const links = document.querySelectorAll('.btns a')
+
+      document.querySelectorAll('section').forEach( section => {
+        if (
+            window.pageYOffset >= (section.offsetTop - 52) &&
+            window.pageYOffset < (section.offsetTop + section.offsetHeight)
+        ) {
+          links.forEach( link => {
+            link.classList.remove('tag-active')
+            const linkHref = link.href.split('#').at(-1)
+            const sectionId = section.id.split('-')[0]
+            if (sectionId === linkHref) {
+              link.classList.add('tag-active')
+            }
+          })
+        }
+      })
+    },
+
   },
 
   mounted() {
-    this.subNavTop = this.$refs.subNav.$el?.offsetTop
+    this.subNavTop = this.$refs.subNav?.$el.offsetTop
     window.addEventListener('scroll', throttle(this.addFixed, 100))
+    window.addEventListener('scroll', throttle(this.changeNav, 200))
   },
 
   beforeDestroy() {
     window.removeEventListener('scroll', throttle(this.addFixed, 100))
+    window.removeEventListener('scroll', throttle(this.changeNav, 200))
   },
+
+  // todo
+  // 2. сделать скролл до якоря выше на высоту меню, чтобы заголовки не скрывались
 }
 </script>
 
 <style lang="scss" scoped>
-ul.colored{
-  margin-left: 20px;
-  & > li{
+.colored{
+  margin-left: $offset;
+
+  &-li {
     line-height: 1.6;
     position: relative;
-    padding-bottom: 10px;
-    &:before{
+    padding-bottom: $offset;
+
+    &:last-child {
+      padding-bottom: 0;
+      &:after {
+        height: calc(100% - 6px);
+      }
+    }
+
+    &:before {
       background: $first-color;
       border-radius: 50%;
       content: '';
@@ -186,23 +230,33 @@ ul.colored{
       height: 8px;
       position: absolute;
       left: -20px;
-      top: 8px;
+      top: 6px;
       width: 8px;
       z-index: 10;
     }
-    &:after{
+
+    &:after {
       background: $first-color;
       content: '';
       display: block;
-      height: 120%;
-      top: 8px;
+      height: 100%;
+      top: 6px;
       left: -17px;
       position: absolute;
       width: 2px;
     }
-    &:last-child:after{
-      background: $inverted-color;
-    }
   }
+
+  @include respond-to(medium-up) {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+  }
+
+}
+
+.top-line.section {
+  margin-top: 0;
 }
 </style>

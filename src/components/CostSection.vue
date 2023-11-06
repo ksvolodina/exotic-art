@@ -31,8 +31,10 @@ export default {
 
 <style lang="scss" scoped>
 .section {
+  @include transition;
   padding-top: $offset;
   padding-bottom: $offset;
+  //scroll-margin-top: 56px;
   @include respond-to(medium-up) {
     padding-top: $offset-large;
     padding-bottom: $offset-large;

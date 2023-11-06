@@ -1,10 +1,11 @@
 <template>
-  <div class="btns offset-bottom">
+  <div class="btns sub-nav">
     <ButtonLink
         v-for="btn in btnsList"
         :key="btn.title"
         :to="`#${btn.href}`"
         class="btn-small btn-rounded btn-inverted-basic"
+        @click="$emit('click', $event)"
     >
       {{ btn.title }}
     </ButtonLink>
@@ -25,15 +26,21 @@ export default {
       required: true,
     }
   },
+
+  methods: {
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+
+.sub-nav{
+  background: $inverted-color;
+  padding: $offset/2 0;
+}
 .fixed {
   @include transition;
-  background: $inverted-color;
   box-shadow: $box-shadow;
-  padding: 10px 0;
   position: fixed;
   top: 0;
   left: 0;

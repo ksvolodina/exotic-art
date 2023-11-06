@@ -57,7 +57,7 @@ body {
   font: 400 16px/1.5 $basic-font-family;
   min-width: 320px;
   max-width: 100%;
-  overflow-x: hidden;
+  //overflow-x: hidden;
 }
 
 // Typo
@@ -138,7 +138,7 @@ ul {
   list-style-type: none;
   &.txt {
     list-style-type: "- ";
-    padding-left: 30px;
+    padding-left: $offset;
   }
 }
 

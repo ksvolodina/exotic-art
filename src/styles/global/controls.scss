@@ -550,12 +550,15 @@ body button, body [type="submit"], body [type="button"]{
     border-radius: 20px;
   }
 
-  &-active{
+  &.tag-active{
     background: $first-color;
+    border-color: $first-color;
     color: $inverted-color;
   }
 
 }
+
+
 
 [type="submit"], [type="button"]{
   line-height: 1.4 !important;
