@@ -14,7 +14,7 @@
         class="img"
     >
 
-    <h3 class="img-title">{{ title }}</h3>
+    <h3 class="img-title" :class="showImgTitle">{{ title }}</h3>
     <p class="img-subtitle">{{ subtitle }}</p>
   </component>
 
@@ -54,6 +54,10 @@ export default {
       type: String,
       default: 'Шоу-балет на праздник в СПб'
     },
+    showImgTitle: {
+      type: String,
+      default: '',
+    }
   },
 
   computed: {
@@ -90,19 +94,31 @@ export default {
   }
 
   &-title {
-    opacity: 0;
-    @include respond-to(medium-up) {
+    display: none;
+
+    @mixin show-img-title {
       background: linear-gradient(0deg, $basic-color-dark 0%, transparent);
       bottom: 0;
       color: $inverted-color;
+      display: block;
       left: 0;
       margin-bottom: 0;
-      opacity: 1;
       padding: 60px $offset $offset;
       position: absolute;
       text-transform: uppercase;
       width: 100%;
       z-index: 5;
+    }
+
+    &.show-img-title {
+      @include show-img-title;
+      & + .img-subtitle {
+        display: none;
+      }
+    }
+
+    @include respond-to(medium-up) {
+      @include show-img-title;
     }
   }
 

@@ -12,7 +12,7 @@
           :link-src="`/shows/${show.slug}`"
           :img-src="show.imageFrontpage"
           :img-alt="show.alt"
-          class="frontpage-img"
+          class="img-wrapper-small"
       />
     </li>
   </ul>
@@ -25,7 +25,7 @@
       :description="promoMain.description"
       :img-src="require('@/assets/img/promo/samba.jpg')"
       :show-page="false"
-      class-img-wrapper="frontpage-img"
+      class-img-wrapper="img-wrapper-small"
       class="offset-bottom frontpage-offset"
   />
 

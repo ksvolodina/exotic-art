@@ -102,11 +102,11 @@
         что вы сможете предоставить нам <RouterLink to="/how" class="link">гримерную</RouterLink> .
       </p>
 
-      <ul class="colored">
+      <ul class="list-colored">
         <li
             v-for="payment in payments"
             :key="payment.title"
-            class="colored-li"
+            class="list-colored-item"
         >
           <h3 class="text-left">{{ payment.title }}</h3>
           <ul class="txt">
@@ -209,53 +209,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.colored{
-  margin-left: $offset;
-
-  &-li {
-    line-height: 1.6;
-    position: relative;
-    padding-bottom: $offset;
-
-    &:last-child {
-      padding-bottom: 0;
-      &:after {
-        height: calc(100% - 6px);
-      }
-    }
-
-    &:before {
-      background: $first-color;
-      border-radius: 50%;
-      content: '';
-      display: block;
-      height: 8px;
-      position: absolute;
-      left: -20px;
-      top: 6px;
-      width: 8px;
-      z-index: 10;
-    }
-
-    &:after {
-      background: $first-color;
-      content: '';
-      display: block;
-      height: 100%;
-      top: 6px;
-      left: -17px;
-      position: absolute;
-      width: 2px;
-    }
-  }
-
+.list-colored {
   @include respond-to(medium-up) {
     display: table;
     margin-left: auto;
     margin-right: auto;
     width: auto;
   }
-
 }
 
 .top-line.section {

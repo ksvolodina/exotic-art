@@ -3,10 +3,10 @@ table{
   border: $border;
   border-collapse: collapse;
   table-layout: fixed;
+  text-align: center;
   width: 100%;
   th, td{
     padding: 10px 20px;
-    text-align: center;
   }
   th{
     background: $basic-color-light;
@@ -21,56 +21,7 @@ table{
 }
 
 /*----------------------------------------------------- cleaned -----------------------------------------------------*/
-table.small{
-  border: none;
-  box-shadow: none;
-  table-layout: auto;
-  text-align: left;
-  th{
-    background: transparent;
-    color: $basic-color;
-  }
-  th, td{
-    color: $basic-color;
-    padding: 10px 40px 10px 0;
-    vertical-align: top;
-    &:last-child{
-      padding-right: 0;
-    }
-  }
-  tr{
-    background: transparent !important;
-  }
-  &.centered{
-    max-width: 80%;
-    width: auto;
-    //@include respond-to(custom-medium-down){
-    //  max-width: 100%;
-    //}
-  }
-  //@include respond-to(custom-xsmall-down){
-  //  th, td, tr{
-  //    display: block;
-  //  }
-  //  th, td{
-  //    padding: 0 10px;
-  //    &:last-child{
-  //      padding-right: 10px;
-  //    }
-  //  }
-  //  th{
-  //    color: $basic-color-light;
-  //    font-size: 13px;
-  //    font-weight: 400;
-  //  }
-  //  td{
-  //    font-weight: 500;
-  //  }
-  //  tr{
-  //    margin-bottom: 20px;
-  //  }
-  //}
-}
+
 
 .payment-table{
   @extend .small;
@@ -104,24 +55,4 @@ table.small{
       color: $first-color;
     }
   }
-  //@include respond-to(custom-xsmall-down){
-  //  tr{
-  //    th, td{
-  //      border-right: none;
-  //      padding: 0;
-  //    }
-  //    &:last-child{
-  //      margin-bottom: 0;
-  //    }
-  //    &.all{
-  //      border-bottom: none;
-  //      th, td{
-  //        text-transform: none;
-  //      }
-  //      th{
-  //        padding-top: 20px;
-  //      }
-  //    }
-  //  }
-  //}
 }

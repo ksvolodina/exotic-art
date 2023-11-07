@@ -90,7 +90,7 @@ h2, .h2 {
   text-align: center;
 
   @include respond-to(large-up) {
-    font-size: 24px;
+    font-size: 25px;
     margin-bottom: $offset-large;
   }
 }
@@ -141,6 +141,49 @@ ul {
     padding-left: $offset;
   }
 }
+
+.list-colored{
+  margin-left: $offset;
+
+  &-item {
+    line-height: 1.6;
+    position: relative;
+    padding-bottom: $offset;
+
+    &:last-child {
+      padding-bottom: 0;
+      &:after {
+        height: calc(100% - 6px);
+      }
+    }
+
+    &:before {
+      background: $first-color;
+      border-radius: 50%;
+      content: '';
+      display: block;
+      height: 8px;
+      position: absolute;
+      left: -20px;
+      top: 6px;
+      width: 8px;
+      z-index: 10;
+    }
+
+    &:after {
+      background: $first-color;
+      content: '';
+      display: block;
+      height: 100%;
+      top: 6px;
+      left: -17px;
+      position: absolute;
+      width: 2px;
+    }
+  }
+}
+
+
 
 // todo
 ol {

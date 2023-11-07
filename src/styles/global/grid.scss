@@ -57,6 +57,13 @@ $total-columns: 12;
   }
 }
 
+@for $i from 1 through $total-columns{
+  [class*='medium-#{$i}'],
+  [class*='large-#{$i}'] {
+    width: 100%;
+  }
+}
+
 body{
   @include respond-to(medium-up){
     @include grid-class(medium);
@@ -66,10 +73,10 @@ body{
   }
 }
 
-[class*='medium-'],
-[class*='large-'] {
-  width: 100%;
-}
+//[class*='medium-'],
+//[class*='large-'] {
+//  width: 100%;
+//}
 
 .medium-up-show {
   display: none;

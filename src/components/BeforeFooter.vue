@@ -2,7 +2,7 @@
   <div class="light-block text-center">
     <div class="row">
 
-      <h2 class="h1 offset-top-0 offset-bottom-small">Мы рады быть частью ваших событий!</h2>
+      <h2 class="offset-bottom-small">Мы рады быть частью ваших событий!</h2>
 
       <p class="offset-bottom-small">
         На Вашем мероприятии все должно быть идеально.<br>
