@@ -11,7 +11,11 @@
     <div class="sub-nav-wrap medium-up-hide offset-bottom">
       <SubNav
           ref="subNav"
-          :btns-list="btns"
+          :btn-list="btns"
+          :sections-ref="sectionsRef"
+          :class="{
+            'fixed': isIntersection
+          }"
           @click="scrollToSection"
       />
     </div>
@@ -24,6 +28,7 @@
       :class="{
         'light-block': index%2 === 0
       }"
+      :ref="setSectionsRef"
     >
 
       <ul v-if="index === 0" class="flex-wrap">
@@ -92,7 +97,11 @@
       </table>
     </CostSection>
 
-  <section id="payment" class="section top-line top-line-colored top-line-large offset-bottom">
+  <section
+      :ref="setSectionsRef"
+      id="payment"
+      class="section top-line top-line-colored top-line-large offset-bottom"
+  >
     <div class="row">
       <h2 class="h1 offset-top-0">Варианты оплаты</h2>
 
@@ -141,55 +150,43 @@ export default {
 
   data() {
     return {
-      cost: cost,
-      btns: btns,
-      sections: sections,
+      cost,
+      btns,
+      sections,
       payments: payment,
       subNavTop: 0,
+      isIntersection: false,
+      sectionsRef: [],
     }
   },
 
   methods: {
-    addFixed() {
-      const subNav = this.$refs.subNav?.$el
-      const isSubNavFixed = subNav?.classList.contains('fixed')
 
-      if (subNav && window.pageYOffset >= this.subNavTop && !isSubNavFixed) {
-        subNav.classList.add('fixed')
-      }
-      if (window.pageYOffset < this.subNavTop && isSubNavFixed) {
-        subNav.classList.remove('fixed')
+    setSectionsRef(el) {
+      if (!el) return
+
+      if (el.$el) {
+        this.sectionsRef.push(el.$el)
+      } else {
+        this.sectionsRef.push(el)
       }
     },
 
-    scrollToSection(event) {
-      const idTarget = event.target.href.split('#').at(-1)
-      const sectionTop = document.getElementById(idTarget).offsetTop
+    addFixed() {
+      if (window.pageYOffset >= this.subNavTop) {
+        this.isIntersection = true
+      }
+      if (window.pageYOffset < this.subNavTop) {
+        this.isIntersection = false
+      }
+    },
 
+    scrollToSection(href) {
+      const sectionTop = this.sectionsRef.find(section => section.id === href).offsetTop
       window.scrollTo({
         top: sectionTop - 50,
         behavior: 'smooth'
       });
-    },
-
-    changeNav() {
-      const links = document.querySelectorAll('.btns a')
-
-      document.querySelectorAll('section').forEach( section => {
-        if (
-            window.pageYOffset >= (section.offsetTop - 52) &&
-            window.pageYOffset < (section.offsetTop + section.offsetHeight)
-        ) {
-          links.forEach( link => {
-            link.classList.remove('tag-active')
-            const linkHref = link.href.split('#').at(-1)
-            const sectionId = section.id.split('-')[0]
-            if (sectionId === linkHref) {
-              link.classList.add('tag-active')
-            }
-          })
-        }
-      })
     },
 
   },
@@ -197,14 +194,11 @@ export default {
   mounted() {
     this.subNavTop = this.$refs.subNav?.$el.getBoundingClientRect().top
     window.addEventListener('scroll', throttle(this.addFixed, 100))
-    window.addEventListener('scroll', throttle(this.changeNav, 200))
   },
 
   beforeDestroy() {
     window.removeEventListener('scroll', throttle(this.addFixed, 100))
-    window.removeEventListener('scroll', throttle(this.changeNav, 200))
   },
-
 }
 </script>
 
