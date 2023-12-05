@@ -17,7 +17,7 @@
     </li>
   </ul>
 
-  <h2 class="row medium-up-show">По-настоящему уникальное шоу для России</h2>
+  <h2 class="row">По-настоящему уникальное шоу для России</h2>
 
   <PromoItem
       tag="h3"
@@ -26,11 +26,11 @@
       :img-src="require('@/assets/img/promo/samba.jpg')"
       :show-page="false"
       class-img-wrapper="img-wrapper-small"
-      class="offset-bottom frontpage-offset"
+      class="offset-bottom"
   />
 
   <div class="row flex-center offset-bottom">
-    <div class="medium-8">
+    <div class="medium-12 large-8">
       <h3 class="medium-up-show">
         Опыт карнавала Рио-де-Жанейро, стильные костюмы и первоклассная самба -
         это шоу, от которого невозможно оторвать взгляд
@@ -50,6 +50,7 @@ import BeforeFooter from "@/components/BeforeFooter";
 import ImgItem from "@/components/ImgItem";
 import VideoItem from "@/components/VideoItem";
 import PromoItem from "@/components/PromoItem";
+import {mapGetters} from "vuex";
 
 export default {
   name: "Main",
@@ -58,17 +59,17 @@ export default {
   data() {
     return {
       shows: frontpage,
-      promoMain: promoMain
+      promoMain
     }
+  },
+
+  computed: {
+    ...mapGetters({
+      smallScreen: "smallScreen"
+    }),
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.frontpage-offset {
-  margin-top: -$offset;
-  @include respond-to(medium-up) {
-    margin-top: 0;
-  }
-}
 </style>

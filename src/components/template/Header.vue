@@ -14,9 +14,7 @@
       @navClick="closeNav"
     />
 
-    <ContactsLinks
-        :small-screen="smallScreen"
-    />
+    <ContactsLinks/>
 
     <RouterLink to="/" class="logo" title="На главную">
       <img src="@/assets/img/logo.svg" alt="">
@@ -28,11 +26,13 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import ButtonLink from "@/components/UI/ButtonLink";
 import Nav from "@/components/template/Nav";
 import ContactsLinks from "@/components/template/ContactsLinks";
 
 export default {
+
   name: "Header",
 
   components: {ContactsLinks, Nav, ButtonLink},
@@ -43,17 +43,16 @@ export default {
     }
   },
 
-  props: {
-    smallScreen: {
-      type: Boolean,
-      required: true,
-    }
-  },
-
   methods: {
     closeNav() {
       if (this.smallScreen) this.show = !this.show
     }
+  },
+
+  computed: {
+    ...mapGetters({
+      smallScreen: "smallScreen"
+    }),
   },
 
 }

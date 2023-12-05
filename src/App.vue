@@ -1,7 +1,7 @@
 <template>
   <div class="app">
 
-    <Header :small-screen="smallScreen"/>
+    <Header/>
 
     <Nav v-if="!smallScreen"/>
 
@@ -9,12 +9,13 @@
       <RouterView/>
     </main>
 
-    <Footer :small-screen="smallScreen"/>
+    <Footer/>
 
   </div>
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
 import Header from "@/components/template/Header";
 import Nav from "@/components/template/Nav";
 import Footer from "@/components/template/Footer";
@@ -25,27 +26,28 @@ export default {
 
   data() {
     return {
-      smallScreen: true,
     }
   },
 
   methods: {
-    getScreenWidth() {
-      if (window.innerWidth > 767) {
-        this.smallScreen = false
-      } else {
-        this.smallScreen = true
-      }
-    },
+    ...mapActions({
+      setSiteWidth: "setSiteWidth",
+    }),
+  },
+
+  computed: {
+    ...mapGetters({
+      smallScreen: "smallScreen"
+    })
   },
 
   mounted() {
-    window.addEventListener('resize', throttle(this.getScreenWidth, 100))
-    this.getScreenWidth()
+    window.addEventListener('resize', throttle(this.setSiteWidth, 100))
+    this.setSiteWidth()
   },
 
   beforeDestroy() {
-    window.removeEventListener('resize', throttle(this.getScreenWidth, 100))
+    window.removeEventListener('resize', throttle(this.setSiteWidth, 100))
   }
 }
 </script>
@@ -53,7 +55,7 @@ export default {
 <style lang="scss">
 html,
 body{
-  height: 100%;
+  overflow-x: hidden;
 }
 
 .app{

@@ -1,7 +1,13 @@
+$img-height: 380px;
+
 .img-wrapper {
   @include transition;
+  height: $img-height;
+  display: block;
   overflow: hidden;
   position: relative;
+  text-align: center;
+  width: 100%;
 
   &:before {
     @include transition;
@@ -18,7 +24,10 @@
   }
 
   body &-small {
-    height: 300px;
+    height: $img-height - 130;
+    @include respond-to(medium-up) {
+      height: $img-height - 80;
+    }
   }
 
   &:not(.no-hover) {
@@ -31,14 +40,13 @@
       }
     }
   }
-
 }
 
 .img {
   @include transition;
   transform: translate(-50%, -50%);
   height: 100%;
-  object-fit:cover;
+  object-fit: cover;
   position: absolute;
   left: 50%;
   max-width: none;

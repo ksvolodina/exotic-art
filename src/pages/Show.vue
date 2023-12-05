@@ -8,21 +8,28 @@
       :duration="show.duration"
       :img-src="show.imageMain"
       :img-alt="show.alt"
+      @click-btn="scrollToBlock($refs[$event])"
   />
 
-  <p v-html="show.text" class="row medium-6 offset-top offset-bottom"/>
+  <p v-html="show.text" class="row medium-8 large-6 offset-top offset-bottom"/>
 
-  <ul class="row show-gallery">
-    <li
-        v-for="(image, index) in show.imagesGallery"
-        :key="index"
-        class="img-item img-wrapper"
-    >
-      <img :src="image" alt="" class="img">
-    </li>
-  </ul>
+  <div class="row">
+    <ImgGallery
+        :images="show.imagesGallery"
+        :image-alt="show.alt"
+        @openModal="showModal = true"
+    />
+  </div>
 
-  <h2 id="video" class="row offset-top-20">Видео номера</h2>
+  <Modal v-model:showModal="showModal" v-if="!smallScreen">
+    <ImgGallery
+        :is-modal="true"
+        :images="show.imagesGallery"
+        :image-alt="show.alt"
+    />
+  </Modal>
+
+  <h2 ref="video" class="row offset-top">Видео номера</h2>
   <div class="row">
     <ul class="flex-wrap">
       <li
@@ -40,21 +47,27 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 import {show} from "@/info/shows";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BeforeFooter from "@/components/BeforeFooter";
 import VideoItem from "@/components/VideoItem";
 import PromoItem from "@/components/PromoItem";
+import ImgGallery from "@/components/ImgGallery";
+import Modal from "@/components/Modal";
+import {scrollToBlock} from "@/helpers/scrollTo"
 
 export default {
   name: "Show",
 
-  components: {PromoItem, VideoItem, BeforeFooter, Breadcrumbs},
+  components: {Modal, ImgGallery, PromoItem, VideoItem, BeforeFooter, Breadcrumbs},
 
   data() {
     return {
       allShows: show,
       show: {},
+      showModal: false,
+      scrollToBlock,
     }
   },
 
@@ -62,11 +75,19 @@ export default {
     getShow() {
       this.show = this.allShows.find(show => show.slug === this.$route.params.slug)
     },
+
+  },
+
+  computed: {
+    ...mapGetters({
+      smallScreen: "smallScreen"
+    }),
   },
 
   created() {
     this.getShow()
   },
+
 
 }
 </script>

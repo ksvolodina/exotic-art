@@ -51,14 +51,12 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: "ContactsLinks",
 
   props: {
-    smallScreen: {
-      type: Boolean,
-      required: true,
-    },
     templateLocate: {
       type: String,
       default: 'header'
@@ -69,6 +67,9 @@ export default {
     isFooter() {
       return this.templateLocate === 'footer'
     },
+    ...mapGetters({
+      smallScreen: "smallScreen"
+    }),
   },
 }
 </script>

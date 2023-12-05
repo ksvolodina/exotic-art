@@ -2,30 +2,35 @@
   <div class="promo">
     <div class="promo-info">
 
-      <div class="promo-title">
+      <div class="promo-title" v-if="!smallScreen || showPage">
 
         <component :is="tag">
           {{ title }}
         </component>
 
         <ButtonLink
-            to="#video"
             class="btn-small btn-rounded btn-inverted"
             show-page="showPage"
             v-if="showPage"
+            @click.stop="$emit('clickBtn', 'video')"
         >
           Смотреть видео
         </ButtonLink>
       </div>
 
-      <div class="promo-txt">
+      <div
+          class="promo-txt medium-8 large-12 centered"
+          :class="{
+            'offset-bottom offset-top': showPage && smallScreen
+          }"
+      >
         <p v-html="description" class="promo-description"/>
         <p class="promo-time" v-if="showPage">Продолжительность номера — {{ duration }}</p>
       </div>
 
     </div>
 
-    <div class="promo-img" :class="classImgWrapper">
+    <div class="promo-img" :class="classImgWrapper" v-if="showPage || !smallScreen">
       <img :src="imgSrc" :alt="imgAlt" class="img">
     </div>
   </div>
@@ -33,6 +38,8 @@
 
 <script>
 import ButtonLink from "@/components/UI/ButtonLink";
+import {mapGetters} from "vuex";
+
 export default {
   name: "PromoItem",
 
@@ -71,6 +78,12 @@ export default {
       type: String,
       default: ''
     },
+  },
+
+  computed: {
+    ...mapGetters({
+      smallScreen: "smallScreen"
+    }),
   },
 
 }
@@ -119,7 +132,10 @@ export default {
   }
 
   &-txt{
-    padding: $offset;
+    padding: 0 $row-padding;
+    @include respond-to(medium-up) {
+      padding: $row-padding;
+    }
     @include respond-to(large-up) {
       background: $inverted-color;
       box-shadow: $box-shadow;
@@ -137,19 +153,21 @@ export default {
   }
 
   &-img {
-    display: none;
+    display: block;
+    height: $img-height;
+    margin: 0 $row-padding;
+    position: relative;
     @include respond-to(large-up) {
-      display: block;
       height: 540px;
+      margin: 0;
       overflow: hidden;
-      position: relative;
       width: 70%;
     }
   }
 
   &-time{
-    font-size: 14px;
-    opacity: .6;
+    color: $first-color;
+    font-weight: 500;
   }
 
 }

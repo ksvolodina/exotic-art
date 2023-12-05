@@ -6,7 +6,7 @@
       :class="{
         'no-hover': !isLink
       }"
-      class="img-item img-wrapper"
+      class="img-wrapper"
   >
     <img
         :src="imgSrc"
@@ -14,8 +14,8 @@
         class="img"
     >
 
-    <h3 class="img-title" :class="showImgTitle">{{ title }}</h3>
-    <p class="img-subtitle">{{ subtitle }}</p>
+    <h3 v-if="title" class="img-title" :class="showImgTitle">{{ title }}</h3>
+    <p v-if="subtitle" class="img-subtitle">{{ subtitle }}</p>
   </component>
 
 </template>
@@ -72,23 +72,12 @@ export default {
 <style lang="scss" scoped>
 .img {
 
-  &-item {
-    height: 350px;
-    display: block;
-    text-align: center;
-    width: 100%;
+  &-wrapper {
 
     @include hover {
       .img-subtitle{
         opacity: 1;
       }
-    }
-
-    @include respond-to(large-up) {
-      height: 400px;
-    }
-    @include respond-to(xlarge-up) {
-      height: 500px;
     }
 
   }

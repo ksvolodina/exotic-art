@@ -4,7 +4,6 @@
     <div class="row footer-contacts">
 
       <ContactsLinks
-        :small-screen="smallScreen"
         template-locate="footer"
       />
 
@@ -29,15 +28,7 @@ import ContactsLinks from "@/components/template/ContactsLinks";
 
 export default {
   name: "Footer",
-
   components: {ContactsLinks},
-
-  props: {
-    smallScreen: {
-      type: Boolean,
-      required: true,
-    }
-  },
 }
 </script>
 
